@@ -1,5 +1,5 @@
-import Title from "../shared/Title.component";
-import { Button } from "../../components/ui/button";
+import Title from "@components/shared/Title.component.jsx";
+import { Button } from "@components/ui/button";
 /**
  * Application header component.
  */
@@ -10,7 +10,7 @@ export default function Header() {
       <p className="app-header__subtitle">
         Simple task list powered by Supabase, built with React + Vite.
       </p>
-      <Button>Click Me</Button>
+      <Button variant="secondary">Click Me</Button>
     </header>
   );
 }

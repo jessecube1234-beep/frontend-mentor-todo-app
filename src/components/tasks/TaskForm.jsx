@@ -1,25 +1,49 @@
 import { useState } from "react";
 
-export default function TaskForm({ addTask }) {
+// Custom components
+import Input from "@components/shared/input.component";
+
+/**
+ * NewTaskForm lets the user add a new task.
+ *
+ * @param {object} props
+ * @param {(title: string) => Promise<void> | void} props.onAddTask
+ *        Callback invoked when the form is submitted with a non-empty title.
+ */
+const NewTaskForm = ({ onAddTask }) => {
   const [title, setTitle] = useState("");
-  const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    if (!title.trim()) {
-      setError("Title is required.");
+    const trimmed = title.trim();
+
+    if (!trimmed) {
+      setError("Task title cannot be empty.");
       return;
     }
 
+    if (trimmed.length > 80) {
+      setError("Task title cannot exceed 80 characters.");
+      return;
+    }
+
+    setError(null);
+    setSubmitting(true);
+
     try {
-      setSubmitting(true);
-      setError("");
-      await addTask(title.trim());
-      setTitle("");
-    } catch {
-      setError("Could not add task. Please try again.");
+      await onAddTask(trimmed);
+      setTitle('');
+    } catch (formError) {
+      console.log(formError);
+      setError("Failed to add a task. Error message: " + formError?.message);
+
+      setTimeout(() => {
+        setError("");
+      }, 5000);
+
     } finally {
       setSubmitting(false);
     }
@@ -27,28 +51,27 @@ export default function TaskForm({ addTask }) {
 
   return (
     <form onSubmit={handleSubmit} className="new-task-form">
-      <label htmlFor="assignment-task-title" className="sr-only">
+      <label htmlFor="task-title" className="sr-only">
         Task title
       </label>
 
-      <input
-        id="assignment-task-title"
+      <Input
+        id="task-title"
         type="text"
-        placeholder="Add a new task..."
+        placeholder="Add a new task…"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(event) => setTitle(event.target.value)}
         disabled={submitting}
+        className="flex-1"
       />
 
-      <button
-        type="submit"
-        disabled={submitting || !title.trim()}
-      >
-        {submitting ? "Adding..." : "Add"}
+      <button type="submit" disabled={submitting || !title.trim()}>
+        {submitting ? "Adding…" : "Add"}
       </button>
 
       {error && <p className="error-text">{error}</p>}
     </form>
   );
-}
+};
 
+export default NewTaskForm;

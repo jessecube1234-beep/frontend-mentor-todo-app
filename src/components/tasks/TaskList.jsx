@@ -1,7 +1,5 @@
 import { useState, useMemo } from "react";
-import Spinner from 'react-bootstrap/Spinner';
 import TaskItem from "./TaskItem.jsx";
-import NewTaskForm from "./NewTaskForm.jsx";
 import { useTasks } from "../../hooks/useTasks.js";
 import TaskForm from "./TaskForm.jsx";
 
@@ -70,7 +68,7 @@ function TaskList() {
     <><section className="card">
       <h2 className="color-white">Tasks</h2>
 
-      <NewTaskForm onAddTask={handleAddTask} />
+      <TaskForm onAddTask={handleAddTask} />
 
       {/* Filter controls */}
       <div style={{ marginBottom: "0.75rem", fontSize: "0.9rem" }}>
@@ -118,7 +116,9 @@ function TaskList() {
       )}
 
       {loading ? (
-        <Spinner animation="border" />
+      <div> 
+        loading...
+      </div>
       ) : (
         <ul className="task-list">
           {visibleTasks.map((task) => (
@@ -130,10 +130,6 @@ function TaskList() {
           ))}
         </ul>
       )}
-    </section><section className="card mt-4">
-        <h2>Add Task (Assignment Form)</h2>
-
-        <TaskForm addTask={handleAddTask} />
     </section></>
   );
 };

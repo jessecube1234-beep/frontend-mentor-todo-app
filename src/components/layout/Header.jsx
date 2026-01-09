@@ -1,7 +1,5 @@
-import Title from "@components/shared/Title.component";
-import { Button } from "@components/ui/button";
 import { useTheme } from "@hooks/useTheme";
-
+import { Button } from "@components/ui/button";
 /**
  * Application header component.
  */
@@ -14,15 +12,17 @@ export default function Header() {
   };
 
   return (
-    <header className="app-header">
-      <Title>
-        Supabase Tasks<span className="underline">--Worked with StylecComponents</span>
-      </Title>
-      <p className="app-header__subtitle">
-        Simple task list powered by Supabase, built with React + Vite.
-      </p>
-      <Button variant="secondary" onClick={handleThemeChange}>
-        Change to {isDark ? "Light" : "Dark"} Mode
+    <header className="flex items-center justify-between mb-10">
+      <h1 className="text-4xl font-bold tracking-[0.5em] text-foreground">
+        TODO
+      </h1>
+
+      <Button
+        variant="ghost"
+        onClick={handleThemeChange}
+        className="uppercase tracking-widest text-xs"
+      >
+        {isDark ? "Light" : "Dark"}
       </Button>
     </header>
   );

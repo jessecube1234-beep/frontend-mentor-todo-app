@@ -1,20 +1,27 @@
-// Import the structured elements 
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "@/components/layout/Header";
+import { useTheme } from "@/hooks/useTheme";
 
-// In JSX and React, when a function receives a param, we call it a prop
-/**
- * AppLayout wraps pages with a shared header and footer.
- *
- * @param {object} props - Component props.
- * @param {React.ReactNode} props.children - Page content.
- */
+import bgLight from "@/assets/bg-desktop-light.jpg";
+import bgDark from "@/assets/bg-desktop-dark.jpg";
+
 function MainLayout({ children }) {
+  const { theme } = useTheme();
+
+  const backgroundImage = theme === "dark" ? bgDark : bgLight;
+
   return (
-    <div className="app-shell">
-      <Header />
-      {children}
-      <Footer />
+    <div className="relative min-h-screen bg-background overflow-hidden">
+      {/* Background */}
+      <div
+        className="absolute top-0 left-0 w-full h-[40vh] bg-cover bg-center"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      />
+
+      {/* Content */}
+      <main className="relative max-w-xl mx-auto px-4 pt-8">
+        <Header />
+        {children}
+      </main>
     </div>
   );
 }

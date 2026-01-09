@@ -10,7 +10,7 @@ function useTasks() {
   const [tasks, setTasks] = useState([]);
 
   // tracks loading state
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // stores any error messages
   const [error, setError] = useState(null);
@@ -19,25 +19,23 @@ function useTasks() {
    * Gets all tasks from Supabase
    */
   const loadTasks = useCallback(async () => {
-    // start loading and reset error
-    setLoading(true);
-    setError(null);
+    try {
+      setError(null);
 
-    const { data, error: queryError } = await supabase
-      .from('tasks')
-      .select('*')
-      .order("created_at", { ascending: false });
+      const { data, error: queryError } = await supabase
+        .from("tasks")
+        .select("*")
+        .order("created_at", { ascending: false });
 
-    // if there's an error, save it
-    if (queryError) {
-      setError('Error loading tasks: ' + queryError.message);
-    } else {
-      // save tasks to state
-      setTasks(data);
+      if (queryError) {
+        setError("Error loading tasks: " + queryError.message);
+        return;
+      }
+
+      setTasks(data ?? []);
+    } finally {
+      setLoading(false);
     }
-
-    // stop loading
-    setLoading(false);
   }, []);
 
   /**
@@ -101,6 +99,22 @@ function useTasks() {
     setTasks((prev) => prev.filter((task) => task.id !== id));
   }, []);
 
+  //Clears completed tasks
+  const clearCompleted = useCallback(async () => {
+    const { error } = await supabase
+      .from("tasks")
+      .delete()
+      .eq("is_complete", true);
+
+    if (error) {
+      console.error(error);
+      throw error;
+    }
+
+    // Update local state
+    setTasks((prev) => prev.filter((task) => !task.is_complete));
+  }, []);
+
   // load tasks when the hook runs
   useEffect(() => {
     const fetchTasks = async () => {
@@ -159,7 +173,8 @@ function useTasks() {
     error,
     addTask,
     toggleTask,
-    deleteTask
+    deleteTask,
+    clearCompleted,
   };
 }
 

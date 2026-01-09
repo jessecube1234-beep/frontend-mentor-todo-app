@@ -1,55 +1,53 @@
-import CustomCheckbox from "@/components/shared/Checkbox.component";
-
+import checkIcon from "@/assets/icon-check.svg";
 /**
  * Displays a single task as a list item.
- * Displays a single task as a list item (read-only on Day 2).
  *
- * @param {object} props
- * @param {{ id: number, title: string, is_complete: boolean }} props.task
- * @param {{ id: number, title: string, is_complete: boolean, inserted_at?: string }} props.task
- * @param {(id: number) => void} props.onToggleComplete
+ * @param {{ task: { id: number, title: string, is_complete: boolean } }} props
+ * @param {(id: number, isComplete: boolean) => void} props.onToggleComplete
  * @param {(id: number) => void} props.onDelete
  */
-export default function TaskItem({ task, onToggleComplete, onDelete }) {
-  /**
-   * Handles checkbox changes and notifies the parent component.
-   */
-  const handleToggle = () => {
-    onToggleComplete(task.id, !task.is_complete);
-  };
-
-  /**
-   * Handles delete button clicks and notifies the parent component.
-   */
-  const handleDelete = () => {
-    onDelete(task.id);
-  };
+function TaskItem({ task, onToggleComplete, onDelete }) {
+  const isCompleted = task.is_complete;
 
   return (
-    <li className="task-item">
-      <label className="task-item__content">
-        <CustomCheckbox
-          checked={task.is_complete}
-          onChange={handleToggle}
-        />
-        <span
-          className={
-            task.is_complete
-              ? "task-item__title task-item__title--done"
-              : "task-item__title"
-          }
-        >
-          {task.title}
-        </span>
-      </label>
+    <li className="group flex items-center gap-4 px-4 py-4">
+      {/* Checkbox */}
       <button
-        type="button"
-        className="task-item__delete"
-        onClick={handleDelete}
+        onClick={() => onToggleComplete(task.id, !isCompleted)}
+        className={`w-5 h-5 rounded-full border flex items-center justify-center
+  ${isCompleted ? "bg-[#5ad1ff] border-transparent" : "border-border"}
+`}
+        aria-label="Toggle task completion"
+      >
+        {isCompleted && (
+          <img src={checkIcon} alt="" className="w-3 h-3" />
+        )}
+      </button>
+
+
+
+      {/* Task text */}
+      <p
+        className={`flex-1 text-sm
+          ${isCompleted
+            ? "line-through text-muted-foreground"
+            : "text-foreground"
+          }`}
+      >
+        {task.title}
+      </p>
+
+      {/* Delete button */}
+      <button
+        onClick={() => onDelete(task.id)}
+        className="opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition"
         aria-label="Delete task"
       >
         ✕
       </button>
-    </li>
+    </li >
   );
 }
+
+export default TaskItem;
+

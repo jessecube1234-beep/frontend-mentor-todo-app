@@ -20,6 +20,34 @@ module.exports = {
     // Allow camelCase class
     "selector-class-pattern": null,
 
-    "at-rule-no-unknown": [true, { ignoreAtRules: ["use", "forward", "mixin", "include", "function"] }]
+    "at-rule-no-unknown": [true, {
+      ignoreAtRules: [
+        "use",
+        "forward",
+        "mixin",
+        "include",
+        "function",
+
+        // Tailwind / PostCSS
+        "tailwind",
+        "layer",
+        "apply",
+        "variants",
+        "responsive",
+        "theme",
+        "custom-variant"
+      ]
+    }
+    ],
+
+    // Tailwind modern color syntax
+    "hue-degree-notation": null,
+    "lightness-notation": null,
+
+    // Tailwind import style
+    "import-notation": null,
+
+    // SCSS variant
+    "scss/at-rule-no-unknown": null
   }
 };

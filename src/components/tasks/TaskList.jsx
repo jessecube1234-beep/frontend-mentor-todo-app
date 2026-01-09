@@ -11,7 +11,7 @@ import TaskForm from "./TaskForm.jsx";
  *  - Delegates add / toggle / delete actions to the hook.
  *  - Displays loading, error and summary information.
  */
-function TaskList() {
+export default function TaskList() {
   const [filter, setFilter] = useState("all"); // "all" | "active" | "completed"
 
   const {
@@ -20,7 +20,8 @@ function TaskList() {
     error,
     addTask,
     toggleTask,
-    deleteTask
+    deleteTask,
+    clearCompleted
   } = useTasks();
 
   /**
@@ -65,73 +66,90 @@ function TaskList() {
   }), [tasks, filter]);
 
   return (
-    <><section className="card">
-      <h2 className="color-white">Tasks</h2>
+    <>
+      <section className="bg-card text-card-foreground rounded-md shadow-lg mb-6">
+        {/* TODO */}
+        <div className="border-b border-border">
+          <TaskForm onAddTask={handleAddTask} />
+        </div>
+      </section>
 
-      <TaskForm onAddTask={handleAddTask} />
+      {/* Content */}
+      <section className="bg-card text-card-foreground rounded-md shadow-lg overflow-hidden">
+        {error && (
+          <p className="p-4 text-sm text-destructive">
+            {error}
+          </p>
+        )}
 
-      {/* Filter controls */}
-      <div style={{ marginBottom: "0.75rem", fontSize: "0.9rem" }}>
-        <span style={{ marginRight: "0.5rem" }}>Filter:</span>
-        <button
-          type="button"
-          onClick={() => setFilter("all")}
-          style={{
-            marginRight: "0.25rem",
-            fontWeight: filter === "all" ? "600" : "400"
-          }}
-        >
-          All
-        </button>
-        <button
-          type="button"
-          onClick={() => setFilter("active")}
-          style={{
-            marginRight: "0.25rem",
-            fontWeight: filter === "active" ? "600" : "400"
-          }}
-        >
-          Active
-        </button>
-        <button
-          type="button"
-          onClick={() => setFilter("completed")}
-          style={{
-            fontWeight: filter === "completed" ? "600" : "400"
-          }}
-        >
-          Completed
-        </button>
-      </div>
+        {!loading && !error && tasks.length === 0 && (
+          <p className="p-4 text-sm text-muted-foreground">
+            No tasks yet.
+          </p>
+        )}
 
-      {error && <p className="error-text">{error}</p>}
+        {loading ? (
+          <div className="p-4 text-sm text-muted-foreground">
+            Loading...
+          </div>
+        ) : (
+          <ul className="divide-y divide-border">
+            {visibleTasks.map((task) => (
+              <TaskItem
+                key={task.id}
+                task={task}
+                onToggleComplete={handleToggleComplete}
+                onDelete={handleDeleteTask}
+              />
+            ))}
+          </ul>
+        )}
 
-      {!loading && !error && tasks.length === 0 && <p>No tasks yet.</p>}
+        {totalTasks > 0 && (
+          <div className="grid grid-cols-3 items-center px-4 py-3 text-sm text-muted-foreground">
+            {/* Left */}
+            <span className="justify-self-start">
+              {totalTasks - completedTasks} items left
+            </span>
 
-      {totalTasks > 0 && (
-        <p className="task-summary">
-          <strong>{totalTasks}</strong> tasks ·{" "}
-          <strong>{completedTasks}</strong> completed
-        </p>
-      )}
+            {/* Center */}
+            <div className="flex justify-center gap-4 font-semibold">
+              <button
+                onClick={() => setFilter("all")}
+                className={filter === "all" ? "text-primary" : ""}
+              >
+                All
+              </button>
+              <button
+                onClick={() => setFilter("active")}
+                className={filter === "active" ? "text-primary" : ""}
+              >
+                Active
+              </button>
+              <button
+                onClick={() => setFilter("completed")}
+                className={filter === "completed" ? "text-primary" : ""}
+              >
+                Completed
+              </button>
+            </div>
 
-      {loading ? (
-      <div> 
-        loading...
-      </div>
-      ) : (
-        <ul className="task-list">
-          {visibleTasks.map((task) => (
-            <TaskItem
-              key={task.id}
-              task={task}
-              onToggleComplete={handleToggleComplete}
-              onDelete={handleDeleteTask} />
-          ))}
-        </ul>
-      )}
-    </section></>
+            {/* Right */}
+            <button
+              onClick={clearCompleted}
+              disabled={completedTasks === 0}
+              className={`justify-self-end transition
+        ${completedTasks === 0
+                  ? "opacity-40 cursor-not-allowed"
+                  : "hover:text-foreground"
+                }
+      `}
+            >
+              Clear Completed
+            </button>
+          </div>
+        )}
+    </section >
+    </>
   );
-};
-
-export default TaskList;
+}

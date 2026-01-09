@@ -34,7 +34,7 @@ const buttonVariants = cva(
       size: "default",
     },
   }
-)
+);
 
 function Button({
   className,
@@ -43,7 +43,7 @@ function Button({
   asChild = false,
   ...props
 }) {
-  const Comp = asChild ? Slot : "button"
+  const Comp = asChild ? Slot : "button";
 
   return (
     <Comp
@@ -57,4 +57,4 @@ function Button({
 
 Button.displayName = "Button";
 
-export { Button }
+export { Button };

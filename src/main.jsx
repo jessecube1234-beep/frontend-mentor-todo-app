@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import '@styles/styles.css';
 import '@styles/main.scss';
 import App from '@/App.jsx';
+import { ThemeProvider } from '@/components/providers/themeProvider';
 
 //Get the root element from the HTML
 const rootElement = document.getElementById('root');
@@ -11,6 +12,8 @@ const rootElement = document.getElementById('root');
 
 createRoot(rootElement).render(
   <StrictMode>
-    <App />
-  </StrictMode>
+    <ThemeProvider defaultTheme='dark'>
+      <App />
+    </ThemeProvider>
+  </StrictMode>,
 );

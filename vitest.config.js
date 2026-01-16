@@ -18,6 +18,7 @@ export default defineConfig({
       '@utils': path.resolve(__dirname, './src/utils'),
       '@providers': path.resolve(__dirname, './src/components/providers'),
       '@test': path.resolve(__dirname, './test'),
+      '@footers': path.resolve(__dirname, './src/components/layout/footers'),
     },
   },
   test: {

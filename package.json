@@ -21,7 +21,8 @@
     "test:watch": "vitest --watch",
     "test:coverage": "vitest run --coverage",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "coverage:report": "vitest run --coverage"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.3.3",

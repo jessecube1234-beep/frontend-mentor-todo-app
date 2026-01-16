@@ -27,6 +27,24 @@ npm install
 npm run dev
 ```
 
+## Testing and Coverage
+
+This project uses a Javascript testing framework compatible with Vite.
+
+Run Test:
+
+```
+npm run test
+```
+
+Run Test Coverage:
+
+```
+npm run coverage:report
+```
+
+
+
 ##Assignment - Week 5
 1. Create at least 5 custom Styled Components
  -Example: Titles, Lists, Etc..

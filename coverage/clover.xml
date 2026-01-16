@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1768575117098" clover="3.2.0">
-  <project timestamp="1768575117098" name="All files">
+<coverage generated="1768579567272" clover="3.2.0">
+  <project timestamp="1768579567272" name="All files">
     <metrics statements="97" coveredstatements="74" conditionals="46" coveredconditionals="25" methods="37" coveredmethods="30" elements="180" coveredelements="129" complexity="0" loc="97" ncloc="97" packages="8" files="10" classes="10"/>
     <package name="components.layout">
       <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
@@ -10,60 +10,60 @@
       </file>
       <file name="Header.jsx" path="C:\Users\jesse\Desktop\frontend-mentor-todo-app\src\components\layout\Header.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
         <line num="13" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="16" count="4" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
       </file>
     </package>
     <package name="components.providers">
       <metrics statements="16" coveredstatements="13" conditionals="9" coveredconditionals="5" methods="7" coveredmethods="5"/>
       <file name="themeProvider.jsx" path="C:\Users\jesse\Desktop\frontend-mentor-todo-app\src\components\providers\themeProvider.jsx">
         <metrics statements="16" coveredstatements="13" conditionals="9" coveredconditionals="5" methods="7" coveredmethods="5"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="10" count="4" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="13" count="4" type="stmt"/>
-        <line num="14" count="4" type="stmt"/>
-        <line num="15" count="4" type="cond" truecount="1" falsecount="3"/>
-        <line num="17" count="4" type="stmt"/>
-        <line num="18" count="4" type="stmt"/>
-        <line num="20" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="15" count="5" type="cond" truecount="1" falsecount="3"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="20" count="5" type="cond" truecount="1" falsecount="1"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
-        <line num="27" count="4" type="stmt"/>
-        <line num="29" count="4" type="stmt"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
       </file>
     </package>
     <package name="components.shared">
       <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="Title.component.jsx" path="C:\Users\jesse\Desktop\frontend-mentor-todo-app\src\components\shared\Title.component.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="2" count="4" type="stmt"/>
-        <line num="3" count="4" type="stmt"/>
+        <line num="1" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
       </file>
     </package>
     <package name="components.ui">
       <metrics statements="4" coveredstatements="4" conditionals="5" coveredconditionals="4" methods="1" coveredmethods="1"/>
       <file name="button.jsx" path="C:\Users\jesse\Desktop\frontend-mentor-todo-app\src\components\ui\button.jsx">
         <metrics statements="4" coveredstatements="4" conditionals="5" coveredconditionals="4" methods="1" coveredmethods="1"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="46" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="48" count="4" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="46" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="48" count="5" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
       </file>
     </package>
     <package name="constants">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="themeConstants.js" path="C:\Users\jesse\Desktop\frontend-mentor-todo-app\src\constants\themeConstants.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
       </file>
     </package>
     <package name="hooks">
@@ -129,16 +129,16 @@
       </file>
       <file name="useTheme.js" path="C:\Users\jesse\Desktop\frontend-mentor-todo-app\src\hooks\useTheme.js">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="5" count="4" type="stmt"/>
-        <line num="6" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="7" count="4" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="6" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="7" count="5" type="stmt"/>
       </file>
     </package>
     <package name="lib">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="utils.js" path="C:\Users\jesse\Desktop\frontend-mentor-todo-app\src\lib\utils.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="5" count="4" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
       </file>
     </package>
     <package name="utils">

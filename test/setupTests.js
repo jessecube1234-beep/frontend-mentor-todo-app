@@ -6,7 +6,7 @@
  * - matchMedia polyfill (ThemeProvider depends on it)
  * - consistent cleanup after each test
  */
-import "@testing-library/jest-dom/vitest";
+import "@testing-library/jest-dom";
 import { afterEach, vi } from "vitest";
 
 // Polyfill matchMedia for jsdom (required by ThemeProvider).

@@ -1,17 +1,12 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss()
-  ],
+  plugins: [react()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -20,10 +15,26 @@ export default defineConfig({
       '@lib': path.resolve(__dirname, './src/lib'),
       '@styles': path.resolve(__dirname, './src/styles'),
       '@assets': path.resolve(__dirname, './src/assets'),
-      '@tests': path.resolve(__dirname, './src/tests'),
       '@utils': path.resolve(__dirname, './src/utils'),
+      '@providers': path.resolve(__dirname, './src/components/providers'),
       '@test': path.resolve(__dirname, './test'),
-      '@providers': path.resolve(__dirname, './src/providers'),
+      '@footers': path.resolve(__dirname, './src/components/layout/footers'),
+    },
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    clearMocks: true,
+    setupFiles: './test/setupTests.js',
+  },
+  coverage: {
+    provider: 'v8',
+    reporter: ['text', 'json', 'html'],
+    thresholds: {
+      lines: 50,
+      functions: 50,
+      branches: 40,
+      statements: 50,
     },
   },
 });

@@ -27,7 +27,31 @@ npm install
 npm run dev
 ```
 
-##Assignment
+## Testing and Coverage
+
+This project uses a Javascript testing framework compatible with Vite.
+
+Run Test:
+
+```
+npm run test
+```
+
+Run Test Coverage:
+
+```
+npm run coverage:report
+```
+
+
+
+##Assignment - Week 5
 1. Create at least 5 custom Styled Components
  -Example: Titles, Lists, Etc..
 2. Use at least 5 ShadcnU components
+
+## Assignments – Week 6
+1. Day 1
+Write unit tests for the remaining arithmetic operations.
+2. Day 2
+Write unit tests for the footer component.
